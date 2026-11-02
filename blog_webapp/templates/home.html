@@ -19,11 +19,15 @@
     </div>
   </nav>
   <table class="table">
+    {% if articles %}
     <tbody>
+      {% for article in articles %}
       <tr>
-        <th scope="row"><a href="">my first article</a></th>
-        <td>August 7, 2026</td>
+        <th scope="row"><a href="{{ url_for('article', article_id=article['id']) }}">{{ article['title'] }}</a></th>
+        <td>{{ article['date_published'] }}</td>
       </tr>
+      {% endfor %}
+    {% endif %}
     </tbody>
   </table>
 </body>
