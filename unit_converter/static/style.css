@@ -1,0 +1,150 @@
+:root {
+  --paper: #f4eddf;
+  --card: #fffdf7;
+  --ink: #2f2a24;
+  --muted: #756b5e;
+  --line: #d8cdbb;
+  --accent: #9b5b3e;
+  --accent-dark: #75412c;
+  --success: #e7f1e2;
+  --error: #f8e1de;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding: 48px 20px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+main {
+  width: min(100%, 520px);
+  margin: 0 auto;
+  padding: 32px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: 0 12px 30px rgb(75 55 35 / 12%);
+}
+
+h1,
+h2 {
+  margin-top: 0;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 24px;
+  font-size: 2rem;
+}
+
+h2 {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 1.3rem;
+}
+
+.measurement-tabs {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.measurement-tabs a {
+  flex: 1;
+  padding: 10px 8px;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  text-align: center;
+  text-decoration: none;
+}
+
+.measurement-tabs a:hover,
+.measurement-tabs a:focus {
+  border-color: var(--accent);
+  color: var(--accent-dark);
+}
+
+form {
+  display: grid;
+  gap: 8px;
+}
+
+label {
+  margin-top: 8px;
+  color: var(--muted);
+}
+
+input,
+select,
+button {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  font: inherit;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid rgb(155 91 62 / 35%);
+  border-color: var(--accent);
+}
+
+button {
+  margin-top: 16px;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+}
+
+button:hover,
+button:focus {
+  background: var(--accent-dark);
+}
+
+#result,
+[role="alert"] {
+  margin-top: 24px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+#result {
+  background: var(--success);
+}
+
+[role="alert"] {
+  background: var(--error);
+}
+
+#result h2 {
+  margin: 0 0 8px;
+}
+
+#result p {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 20px 12px;
+  }
+
+  main {
+    padding: 24px 18px;
+  }
+
+  .measurement-tabs {
+    gap: 4px;
+  }
+}

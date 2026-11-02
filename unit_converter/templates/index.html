@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Unit Converter</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+  <main>
+    <h1>Unit Converter</h1>
+    <nav class="measurement-tabs" aria-label="Measurement type">
+      <a href="{{ url_for('length') }}">Length</a>
+      <a href="{{ url_for('weight') }}">Weight</a>
+      <a href="{{ url_for('temperature') }}">Temperature</a>
+    </nav>
+
+    <h2>{{ measurement|capitalize }} Converter</h2>
+
+    <form method="post" target="_self">
+      <label for="value">Enter a value to convert</label>
+      <input id="value" name="value" type="number" step="any" value="{{ value or '' }}" required>
+
+      <label for="from_unit">Unit to convert from</label>
+      <select id="from_unit" name="from_unit">
+        {% for unit in units %}
+          <option value="{{ unit }}" {% if unit == from_unit %}selected{% endif %}>
+            {{ unit|capitalize }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <label for="to_unit">Unit to convert to</label>
+      <select id="to_unit" name="to_unit">
+        {% for unit in units %}
+          <option value="{{ unit }}" {% if unit == to_unit %}selected{% endif %}>
+            {{ unit|capitalize }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <button type="submit">Convert</button>
+    </form>
+
+    {% if error %}
+      <p role="alert">{{ error }}</p>
+    {% endif %}
+
+    {% if result is not none %}
+      <section id="result" aria-live="polite">
+        <h2>Result</h2>
+        <p>{{ result }}</p>
+      </section>
+    {% endif %}
+  </main>
+
+</body>
+
+</html>
