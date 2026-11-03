@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <title>Aaryan's Blog Login</title>
+</head>
+
+<body>
+  <main class="page">
+    <nav class="site-header">
+      <a class="brand" href="{{ url_for('home') }}">Aaryan's Blog</a>
+    </nav>
+
+    <section class="form-card">
+      <h1>Admin Login</h1>
+      <form method="post" action="{{ url_for('login') }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <label for="username-input">Username</label>
+        <input id="username-input" name="username" type="text" placeholder="enter username" required>
+
+        <label for="password-input">Password</label>
+        <input id="password-input" name="password" type="password" placeholder="enter password" required>
+
+        <button type="submit" class="button">Login</button>
+      </form>
+      {% if error %}
+        <p role="alert">{{ error }}</p>
+      {% endif %}
+    </section>
+  </main>
+</body>
+
+</html>
